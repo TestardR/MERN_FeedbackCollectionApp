@@ -14,9 +14,9 @@ passport.use(
       userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
     },
     (accessToken, refreshToken, profile, done) => {
-      console.log('access token : ', accessToken);
-      console.log('refresh token : ', refreshToken);
-      console.log('profile : ', profile);
+      console.log('access token: ', accessToken);
+      console.log('refresh token: ', refreshToken);
+      console.log('profile: ', profile);
     }
   )
 );
