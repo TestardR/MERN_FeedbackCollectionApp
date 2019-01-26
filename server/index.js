@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
-require('./services/passport'); // Passport - Google Strategy
 require('./models/User'); // User Schema
+require('./services/passport'); // Passport - Google Strategy
 
 mongoose.connect(
   keys.mongoURI,
