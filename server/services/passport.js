@@ -19,6 +19,7 @@ passport.deserializeUser((id, done) => {
   });
 });
 
+// Async/Await
 passport.use(
   new GoogleStrategy(
     {
@@ -28,18 +29,42 @@ passport.use(
       proxy: true,
       userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
     },
-    (accessToken, refreshToken, profile, done) => {
-      User.findOne({ googleId: profile.id }).then(existingUser => {
-        if (existingUser) {
-          // already existing recod with this profile ID
-          done(null, existingUser);
-        } else {
-          // make a new record with profile ID
-          new User({ googleId: profile.id })
-            .save()
-            .then(user => done(null, user));
-        }
-      });
+    async (accessToken, refreshToken, profile, done) => {
+      const existingUser = await User.findOne({ googleId: profile.id });
+      if (existingUser) {
+        // already existing recod with this profile ID
+        // using return, we don't have to use else afterward
+        return done(null, existingUser);
+      }
+      // make a new record with profile ID
+      const user = await new User({ googleId: profile.id }).save();
+      done(null, user);
     }
   )
 );
+
+// Promise
+// passport.use(
+//   new GoogleStrategy(
+//     {
+//       clientID: keys.googleClientID,
+//       clientSecret: keys.googleClientSecret,
+//       callbackURL: '/auth/google/callback',
+//       proxy: true,
+//       userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo'
+//     },
+//     (accessToken, refreshToken, profile, done) => {
+//       User.findOne({ googleId: profile.id }).then(existingUser => {
+//         if (existingUser) {
+//           // already existing recod with this profile ID
+//           done(null, existingUser);
+//         } else {
+//           // make a new record with profile ID
+//           new User({ googleId: profile.id })
+//             .save()
+//             .then(user => done(null, user));
+//         }
+//       });
+//     }
+//   )
+// );
