@@ -1,14 +1,16 @@
+import 'materialize-css/dist/css/materialize.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import reduxTkunk from 'redux-thunk';
 
 import App from './App';
 import reducers from './reducers';
 
 // dummy reducer for now to get our store started () => {}, instead of reducers
-const store = createStore(reducers, {}, applyMiddleware());
+const store = createStore(reducers, {}, applyMiddleware(reduxTkunk));
 
 ReactDOM.render(
   <Provider store={store}>
