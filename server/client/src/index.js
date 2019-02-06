@@ -23,3 +23,6 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+console.log('STRIPE KEY IS', process.env.REACT_APP_STRIPE_KEY);
+console.log('Environement is', process.env.NODE_ENV);
