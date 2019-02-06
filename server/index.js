@@ -3,13 +3,11 @@ const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./config/keys');
+const bodyParser = require('body-parser');
 require('./models/User'); // User Schema
 require('./services/passport'); // Passport - Google Strategy
 
-mongoose.connect(
-  keys.mongoURI,
-  { useNewUrlParser: true }
-);
+mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
 
 const app = express();
 
@@ -21,11 +19,15 @@ app.use(
   })
 );
 
+// bodyParser middleware, when incoming request, bodyParser will assign it to req.body
+app.use(bodyParser.json());
+
 // make passport use the cookie
 app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/authRoutes')(app);
+require('./routes/billingRoutes')(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
