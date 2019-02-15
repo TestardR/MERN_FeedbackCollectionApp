@@ -19,6 +19,9 @@ class Header extends Component {
           <li key="1">
             <Payments />
           </li>,
+          <li key="3" style={{ margin: '0px 10px' }}>
+            Credits: {this.props.auth.credits}
+          </li>,
           <li key="2">
             <a href="/api/logout">Logout</a>
           </li>
@@ -31,7 +34,11 @@ class Header extends Component {
     return (
       <nav>
         <div className="nav-wrapper">
-          <Link to={this.props.auth ? '/surveys' : '/'} className="brand-logo">
+          <Link
+            to={this.props.auth ? '/surveys' : '/'}
+            className="brand-logo"
+            style={{ margin: '0px 10px' }}
+          >
             Emaily
           </Link>
           <ul id="nav-mobile" className="right">
