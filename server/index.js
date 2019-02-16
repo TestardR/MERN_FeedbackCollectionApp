@@ -5,6 +5,7 @@ const passport = require('passport');
 const keys = require('./config/keys');
 const bodyParser = require('body-parser');
 require('./models/User'); // User Schema
+require('./models/Survey');
 require('./services/passport'); // Passport - Google Strategy -
 
 mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
