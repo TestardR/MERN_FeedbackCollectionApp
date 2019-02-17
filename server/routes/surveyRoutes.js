@@ -21,6 +21,7 @@ module.exports = app => {
     });
 
     // Send an email
-    const mail = new Mailer(survey, surveyTemplate(survey));
+    const mailer = new Mailer(survey, surveyTemplate(survey));
+    mailer.send();
   });
 };
