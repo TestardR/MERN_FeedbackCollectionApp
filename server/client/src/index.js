@@ -9,8 +9,8 @@ import reduxTkunk from 'redux-thunk';
 import App from './App';
 import reducers from './reducers';
 // temporary axios call to check our backend routes for survey
-// import axios from 'axios';
-// window.axios = axios;
+import axios from 'axios';
+window.axios = axios;
 
 // dummy reducer for now to get our store started () => {}, instead of reducers
 const store = createStore(reducers, {}, applyMiddleware(reduxTkunk));
