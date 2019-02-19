@@ -1,7 +1,12 @@
 import React from 'react';
 
-function SurveyField() {
-  return <input />;
+function SurveyField({ input, label }) {
+  return (
+    <>
+      <label>{label}</label>
+      <input {...input} />
+    </>
+  );
 }
 
 export default SurveyField;
