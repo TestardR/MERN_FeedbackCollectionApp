@@ -29,7 +29,14 @@ class SurveyFrom extends Component {
       <div>
         <form onSubmit={this.props.handleSubmit(values => console.log(values))}>
           {this.renderField()}
-          <button type="submit">Submit</button>
+          <button type="cancel" className="teal btn-flat left white-text">
+            Cancel
+            <i className="material-icons right">do_not_disturb_alt</i>
+          </button>
+          <button type="submit" className="teal btn-flat right white-text">
+            Submit
+            <i className="material-icons right">done</i>
+          </button>
         </form>
       </div>
     );
