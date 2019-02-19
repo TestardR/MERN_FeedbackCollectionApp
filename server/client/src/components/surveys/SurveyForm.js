@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
+// Field component can be used to show different types of elements that will collect data from our user
 import { Link } from 'react-router-dom';
 import SurveyField from './SurveyField';
-// Field component can be used to show different types of elements that will collect data from our user
+import validateEmails from '../../utils/validateEmails';
 
 const FIELDS = [
   { label: 'Survey title', name: 'title' },
@@ -47,11 +48,15 @@ class SurveyFrom extends Component {
 function validate(values) {
   // all the values coming from our form
   const errors = {};
+
+  errors.emails = validateEmails(values.emails || '');
+
   FIELDS.forEach(({ name }) => {
     if (!values[name]) {
       errors[name] = 'You must complete the field';
     }
   });
+
   return errors;
 }
 
