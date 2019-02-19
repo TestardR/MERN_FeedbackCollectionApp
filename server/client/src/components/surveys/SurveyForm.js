@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
+import { Link } from 'react-router-dom';
 import SurveyField from './SurveyField';
 // Field component can be used to show different types of elements that will collect data from our user
 
@@ -29,10 +30,10 @@ class SurveyFrom extends Component {
       <div>
         <form onSubmit={this.props.handleSubmit(values => console.log(values))}>
           {this.renderField()}
-          <button type="cancel" className="teal btn-flat left white-text">
+          <Link to="/surveys" className="red btn-flat white-text">
             Cancel
             <i className="material-icons right">do_not_disturb_alt</i>
-          </button>
+          </Link>
           <button type="submit" className="teal btn-flat right white-text">
             Submit
             <i className="material-icons right">done</i>
