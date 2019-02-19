@@ -47,9 +47,11 @@ class SurveyFrom extends Component {
 function validate(values) {
   // all the values coming from our form
   const errors = {};
-  if (!values.title) {
-    errors.title = 'You must provide a title';
-  }
+  FIELDS.forEach(({ name }) => {
+    if (!values.name) {
+      errors[name] = 'You must complete the field';
+    }
+  });
   return errors;
 }
 
