@@ -48,7 +48,7 @@ function validate(values) {
   // all the values coming from our form
   const errors = {};
   FIELDS.forEach(({ name }) => {
-    if (!values.name) {
+    if (!values[name]) {
       errors[name] = 'You must complete the field';
     }
   });
