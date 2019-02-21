@@ -59,8 +59,9 @@ function validate(values) {
 
   return errors;
 }
-
+// destroyUnmount allows us to save data
 export default reduxForm({
   validate,
-  form: 'surveyForm'
+  form: 'surveyForm',
+  destroyOnUnmount: false
 })(SurveyFrom);
