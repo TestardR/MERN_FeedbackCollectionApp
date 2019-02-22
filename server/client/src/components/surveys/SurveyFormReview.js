@@ -3,8 +3,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import formFields from './formFields';
 import * as actions from '../../actions';
+// Once connected to withRouter, our component knows about the history object
+import { withRouter } from 'react-router-dom';
 
-const SurveyFormReview = ({ onCancel, formValues, submitSurvey }) => {
+const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
   const reviewFields = formFields.map(({ name, label }) => {
     return (
       <div key={name}>
@@ -26,7 +28,7 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey }) => {
       </button>
       <button
         // We need to add an arrow function, otherwise it would be called immediately
-        onClick={() => submitSurvey(formValues)}
+        onClick={() => submitSurvey(formValues, history)}
         className="green white-text btn-flat right"
       >
         Send Survey<i className="material-icons right">email</i>
@@ -43,4 +45,4 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   actions
-)(SurveyFormReview);
+)(withRouter(SurveyFormReview));
