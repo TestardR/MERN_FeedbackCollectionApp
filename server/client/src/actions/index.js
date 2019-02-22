@@ -26,3 +26,7 @@ export const handleToken = token => async dispatch => {
   // answer from the server, we want the updated user model
   dispatch({ type: FETCH_USER, payload: res.data });
 };
+
+export const submitSurvey = values => {
+  return { type: 'submit_survey' };
+};
